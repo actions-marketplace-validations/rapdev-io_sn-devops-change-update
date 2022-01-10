@@ -37,7 +37,9 @@ const axios = require('axios');
 		console.log("ServiceNow Status: " + response.status + "; Response: " + JSON.stringify(response.data));
 	} catch (e) {
 		core.setFailed(`failed to update change ${e}`);
-		console.error("Response: " + e.response);
+		console.log("Response: " + e);
+		console.log("Response: " + e.response);
+		console.log("Response: " + e.response.data);
 		return
 	}
 
