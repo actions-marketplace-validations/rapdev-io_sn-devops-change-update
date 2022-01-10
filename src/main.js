@@ -39,7 +39,7 @@ const axios = require('axios');
 		core.setFailed(`failed to update change ${e}`);
 		console.log("Response: " + e);
 		console.log("Response: " + e.response);
-		console.log("Response: " + e.response.data);
+		console.log("Response: " + JSON.stringify(e.response.data));
 		return
 	}
 
