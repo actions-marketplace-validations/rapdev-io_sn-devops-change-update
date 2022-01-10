@@ -10,9 +10,6 @@ inputs:
   instance-name: 
     description: 'ServiceNow Instance Name (e.g.: rapdevio)'
     required: true
-  tool-id:
-    description: 'Orchestration tool id'
-    required: true
   context-github:
     description: 'Github context'
     required: true
