@@ -1,5 +1,5 @@
-name: 'ServiceNow DevOps Change'
-description: 'Register Job Artifacts in ServiceNow Devops'
+name: 'ServiceNow DevOps Change Update'
+description: 'Update Change Request in ServiceNow DevOps'
 inputs:
   devops-integration-user-name:
     description: 'Devops Integration User Name'
@@ -16,15 +16,8 @@ inputs:
   context-github:
     description: 'Github context'
     required: true
-  callback-repo:
-    description: 'Callback repo'
-    required: true
-  callback-pipeline-id:
-    description: 'Callback pipeline ID'
-    required: true
-  callback-params:
-    description: 'Callback params'
-    required: true
+  change-number:
+    description: 'ServiceNow change number
 branding:
   icon: 'arrow-right-circle'
   color: 'blue'
