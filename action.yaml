@@ -17,7 +17,14 @@ inputs:
     description: 'Github context'
     required: true
   change-number:
-    description: 'ServiceNow change number
+    description: 'ServiceNow change number'
+    required: true
+  change-state:
+    description: 'ServiceNow change state'
+    required: true
+  change-result:
+    description: 'ServiceNow change result'
+    required: true
 branding:
   icon: 'arrow-right-circle'
   color: 'blue'

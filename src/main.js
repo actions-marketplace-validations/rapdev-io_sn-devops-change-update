@@ -8,23 +8,11 @@ const axios = require('axios');
 	const pass = core.getInput('devops-integration-user-pass', { required: true });
 	const defaultHeaders = { 'Content-Type': 'application/json' };
 
-	const sncChangeUrl = `https://${username}:${pass}@${instanceName}.service-now.com/api/sn_devops/devops/orchestration/changeControl?toolId=${toolId}`;
+	const changeNumber = core.getInput('change-number', { required: true });
+	const changeState = core.getInput('change-state', { required: true });
+	const changeResult = core.getInput('change-result', { required: true });
 
-	const callbackRepo = core.getInput('callback-repo', { required: true });
-	const callbackPipelineId = core.getInput('callback-pipeline-id', { required: true });
-	let callbackParamsString = core.getInput('callback-params', { required: true });
-	let callbackParams = {};
-
-	
-	try {
-		callbackParams = JSON.parse(callbackParamsString);
-	} catch (e) {
-		core.setFailed(`there is no ref defined in callback-params: ${callbackParamsString}`);
-	}
-
-	if(!callbackParams.ref) {
-		core.setFailed(`exception parsing callbackParams ${e}`);
-	}
+	const sncChangeUrl = `https://${username}:${pass}@${instanceName}.service-now.com/api/x_radi_ghact/devops/update_change/${changeNumber}`;
 	
 
 	let githubContext = core.getInput('context-github', { required: true })
@@ -36,15 +24,14 @@ const axios = require('axios');
 	}
 
 	let changeBody = {
-		'callbackRepo': callbackRepo,
-		'callbackPipelineId': callbackPipelineId,
-		'callbackParams': callbackParams,
+		'changeState': changeState,
+		'changeResult': changeResult,
 		'githubContext': githubContext
 	}
 
 	let response;
 
-	core.info("changePayload " + JSON.stringify(changeBody));
+	core.info("changeUpdatePayload " + JSON.stringify(changeBody));
 	
 	try {
 		response = await axios.post(sncChangeUrl, changeBody, defaultHeaders);
