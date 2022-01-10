@@ -36,8 +36,7 @@ const axios = require('axios');
 		response = await axios.post(sncChangeUrl, changeBody, defaultHeaders);
 		console.log("ServiceNow Status: " + response.status + "; Response: " + JSON.stringify(response.data));
 	} catch (e) {
-		changeBody = JSON.stringify(changeBody);
-		core.setFailed(`failed to create change ${e} \nPayload is ${changeBody}`)
+		core.setFailed(`failed to update change ${e} \nResponse is ` + JSON.stringify(response.data));
 		return
 	}
 
