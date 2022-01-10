@@ -3,7 +3,6 @@ const axios = require('axios');
 
 (async function main() {
 	const instanceName = core.getInput('instance-name', { required: true });
-	const toolId = core.getInput('tool-id', { required: true });
 	const username = core.getInput('devops-integration-user-name', { required: true });
 	const pass = core.getInput('devops-integration-user-pass', { required: true });
 	const defaultHeaders = { 'Content-Type': 'application/json' };
