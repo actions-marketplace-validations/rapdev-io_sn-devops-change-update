@@ -3510,10 +3510,7 @@ const axios = __nccwpck_require__(56);
 		response = await axios.post(sncChangeUrl, changeBody, defaultHeaders);
 		console.log("ServiceNow Status: " + response.status + "; Response: " + JSON.stringify(response.data));
 	} catch (e) {
-		core.setFailed(`failed to update change ${e}`);
-		console.log("Response: " + e);
-		console.log("Response: " + e.response);
-		console.log("Response: " + JSON.stringify(e.response.data));
+		core.setFailed(`failed to update change ${e} \nResponse: ` + JSON.stringify(e.response.data));
 		return
 	}
 
